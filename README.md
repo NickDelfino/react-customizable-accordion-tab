@@ -1,11 +1,11 @@
 # Table of Contents
 
-- [Introduction](#Introduction)
-- [Usage](#Usage)
-- [Documentation](#Documentation)
-- [Acknowledgements](#Acknowledgements)
-  - [FontAwesome](#FontAwesome)
-  - [How to Create an npm package article](#How-to-Create-a-React-Component-for-npm)
+- [Introduction](##Introduction)
+- [Usage](##Usage)
+- [Documentation](##Documentation)
+- [Acknowledgements](##Acknowledgements)
+  - [FontAwesome](###FontAwesome)
+  - [How to Create an npm package article](###How-to-Create-a-React-Component-for-npm)
 
 ## Introduction
 
