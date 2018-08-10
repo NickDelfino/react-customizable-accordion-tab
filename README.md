@@ -4,7 +4,7 @@
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Acknowledgements](#acknowledgements)
-  - [FontAwesome](#fontAwesome)
+  - [FontAwesome](#fontawesome)
   - [How to Create an npm package article](#how-to-create-a-react-component-for-npm)
 
 ## Introduction
@@ -51,7 +51,7 @@ The test project is now running the basic react app.
 
 Now the component can be imported into the test project as you would any other npm package.
 
-To understand more about this process please see the mentioned article in the [acknowledgements](#How-to-Create-a-React-Component-for-npm) section.
+To understand more about this process please see the mentioned article in the [acknowledgements](#how-to-create-a-react-component-for-npm) section.
 
 ## Documentation
 |Properties|Description|
