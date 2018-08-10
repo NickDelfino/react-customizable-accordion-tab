@@ -66,7 +66,7 @@ To understand more about this process please see the mentioned article in the [a
 ## Acknowledgements
 
 ### FontAwesome
-The included .svg icons for plus and minus come from FontAwesome 5.0. The npm FontAwesome package was not used to
+The included .svg icons for plus and minus come from [FontAwesome 5.0](https://fontawesome.com/how-to-use/on-the-web/setup/getting-started?using=svg-with-js). The npm FontAwesome package was not used to
 keep this package light weight. The license for their usage can be found here: https://fontawesome.com/license.
 No changes were made to these icons and the FontAwesome team do not endorse this project in any way.
 
