@@ -58,7 +58,9 @@ To understand more about this process please see the mentioned article in the [a
 |---|---|
 |title (required)| Sets the title of the header. Can be either text or another component. |
 |children (required, default)| Anything inside of the accordion component in the user's project will be added as content. This is what will be shown/hidden.|
-|expanded | Boolean value which sets whether the content is shown or hidden. Content is hidden (false) by default.|
+|show | Boolean value which sets whether the content is shown or hidden. Content is hidden (false) by default.|
+|showIcon| The icon which is used to show the content.|
+|hiddenIcon| The icon which is used to hide the content.|
 |accordionTabContainerStyle|Controls the style of the container for the entire component. Accepts reactjs style objects.|
 |contentContainerStyle|Controls the style of the container for the content. Accepts reactjs style obejcts.|
 |headerContainerStyle|Controls the style of the container for the header. Accepts |

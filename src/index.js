@@ -5,10 +5,10 @@ import Minus from '../assets/minus-solid.svg';
 export default class Accordion extends Component {
     constructor(props) {
         super(props);
-        const { expanded } = props;
+        const { show } = props;
 
         this.state = {
-            expanded: expanded
+            show: show
         };
 
         this.onHeaderClick = this.onHeaderClick.bind(this);
@@ -16,15 +16,18 @@ export default class Accordion extends Component {
     }
 
     showDropdownArrow(){
-        if(this.state.expanded){
-            return <Minus style={styles.iconStyle}/>;
+
+        const { showIcon, hiddenIcon } = this.props;
+
+        if(this.state.show){
+            return hiddenIcon ? hiddenIcon : <Minus style={styles.iconStyle}/>;
         }else{
-            return <Plus style={styles.iconStyle}/>;
+            return showIcon ? showIcon : <Plus style={styles.iconStyle}/>;
         }
     }
 
     onHeaderClick(){
-        this.setState({ expanded: !this.state.expanded })
+        this.setState({ show: !this.state.show })
     }
 
     renderHeader(){
@@ -42,7 +45,7 @@ export default class Accordion extends Component {
     }
 
     renderContent(){
-        if(this.state.expanded){
+        if(this.state.show){
 
             const { contentContainerStyle } = this.props;
 
