@@ -64,17 +64,19 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 1:
 /***/ (function(module, exports) {
 
 module.exports = require("react");
 
 /***/ }),
-/* 1 */
+
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86,7 +88,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -111,7 +113,8 @@ exports.default = function (_ref) {
 };
 
 /***/ }),
-/* 2 */
+
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -123,7 +126,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -148,7 +151,8 @@ exports.default = function (_ref) {
 };
 
 /***/ }),
-/* 3 */
+
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -162,15 +166,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _plusSolid = __webpack_require__(2);
+var _plusSolid = __webpack_require__(23);
 
 var _plusSolid2 = _interopRequireDefault(_plusSolid);
 
-var _minusSolid = __webpack_require__(1);
+var _minusSolid = __webpack_require__(22);
 
 var _minusSolid2 = _interopRequireDefault(_minusSolid);
 
@@ -190,11 +194,11 @@ var Accordion = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Accordion.__proto__ || Object.getPrototypeOf(Accordion)).call(this, props));
 
-        var expanded = props.expanded;
+        var show = props.show;
 
 
         _this.state = {
-            expanded: expanded
+            show: show
         };
 
         _this.onHeaderClick = _this.onHeaderClick.bind(_this);
@@ -205,23 +209,28 @@ var Accordion = function (_Component) {
     _createClass(Accordion, [{
         key: 'showDropdownArrow',
         value: function showDropdownArrow() {
-            if (this.state.expanded) {
-                return _react2.default.createElement(_minusSolid2.default, { style: styles.iconStyle });
+            var _props = this.props,
+                showIcon = _props.showIcon,
+                hiddenIcon = _props.hiddenIcon;
+
+
+            if (this.state.show) {
+                return hiddenIcon ? hiddenIcon : _react2.default.createElement(_minusSolid2.default, { style: styles.iconStyle });
             } else {
-                return _react2.default.createElement(_plusSolid2.default, { style: styles.iconStyle });
+                return showIcon ? showIcon : _react2.default.createElement(_plusSolid2.default, { style: styles.iconStyle });
             }
         }
     }, {
         key: 'onHeaderClick',
         value: function onHeaderClick() {
-            this.setState({ expanded: !this.state.expanded });
+            this.setState({ show: !this.state.show });
         }
     }, {
         key: 'renderHeader',
         value: function renderHeader() {
-            var _props = this.props,
-                title = _props.title,
-                headerContainerStyle = _props.headerContainerStyle;
+            var _props2 = this.props,
+                title = _props2.title,
+                headerContainerStyle = _props2.headerContainerStyle;
 
 
             return _react2.default.createElement(
@@ -241,19 +250,18 @@ var Accordion = function (_Component) {
     }, {
         key: 'renderContent',
         value: function renderContent() {
-            if (this.state.expanded) {
-                var contentContainerStyle = this.props.contentContainerStyle;
+            var contentContainerStyle = this.props.contentContainerStyle;
 
 
-                return _react2.default.createElement(
-                    'div',
-                    {
-                        className: 'content',
-                        style: _extends({}, styles.contentContainerStyle, contentContainerStyle)
-                    },
-                    this.props.children
-                );
-            }
+            var openStyle = this.state.show ? styles.openContent : null;
+
+            return _react2.default.createElement(
+                'div',
+                { className: "content",
+                    style: _extends({}, styles.contentContainerStyle, openStyle, contentContainerStyle)
+                },
+                this.props.children
+            );
         }
     }, {
         key: 'render',
@@ -291,17 +299,26 @@ var styles = {
         height: 50
     },
     contentContainerStyle: {
-        opacity: 1.0,
+        opacity: 0,
         boxSizing: 'border-box',
-        transition: 'height 500ms 0ms, opacity 500ms 500ms',
         borderBottom: 'solid thin #c1c1c1',
         borderRight: 'solid thin #c1c1c1',
         borderLeft: 'solid thin #c1c1c1',
-        padding: 10
+        maxHeight: 0,
+        overflow: 'hidden',
+        padding: 0,
+        transitionProperty: 'max-height opacity',
+        transitionDuration: '500ms',
+        webkitTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        mozTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        oTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        transitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'
     },
-    accordionTabContainerStyle: {
-        margin: 5
+    openContent: {
+        opacity: 1,
+        maxHeight: 400
     },
+    accordionTabContainerStyle: {},
     iconStyle: {
         width: 30,
         height: 30
@@ -309,4 +326,5 @@ var styles = {
 };
 
 /***/ })
-/******/ ]);
+
+/******/ });

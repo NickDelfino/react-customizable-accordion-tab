@@ -45,19 +45,17 @@ export default class Accordion extends Component {
     }
 
     renderContent(){
-        if(this.state.show){
+        const { contentContainerStyle } = this.props;
 
-            const { contentContainerStyle } = this.props;
+        const openStyle = this.state.show ? styles.openContent : null;
 
-            return(
-                <div
-                    className="content"
-                    style={{...styles.contentContainerStyle, ...contentContainerStyle}}
-                >
-                    {this.props.children}
-                </div>
-            );
-        }
+        return(
+            <div className={"content"}
+                 style={{...styles.contentContainerStyle, ...openStyle, ...contentContainerStyle}}
+            >
+                {this.props.children}
+            </div>
+        );
     }
 
     render() {
@@ -88,16 +86,26 @@ const styles = {
         height: 50
     },
     contentContainerStyle: {
-        opacity: 1.0,
+        opacity: 0,
         boxSizing: 'border-box',
-        transition: 'height 500ms 0ms, opacity 500ms 500ms',
         borderBottom: 'solid thin #c1c1c1',
         borderRight: 'solid thin #c1c1c1',
         borderLeft: 'solid thin #c1c1c1',
-        padding: 10
+        maxHeight: 0,
+        overflow: 'hidden',
+        padding: 0,
+        transitionProperty: 'max-height opacity',
+        transitionDuration: '500ms',
+        webkitTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        mozTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        oTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        transitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'
+    },
+    openContent: {
+        opacity: 1,
+        maxHeight: 400
     },
     accordionTabContainerStyle: {
-        margin: 5
     },
     iconStyle: {
         width: 30,
