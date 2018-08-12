@@ -235,14 +235,20 @@ var Accordion = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: 'content-header',
-                    onClick: this.onHeaderClick,
-                    style: _extends({}, styles.headerContainerStyle, headerContainerStyle)
+                {
+                    style: _extends({}, styles.headerContainerStyle, headerContainerStyle),
+                    onClick: this.onHeaderClick
                 },
-                title ? title : _react2.default.createElement(
-                    'p',
-                    null,
-                    'N/A'
+                _react2.default.createElement(
+                    'div',
+                    {
+                        style: styles.titleContainer
+                    },
+                    title ? title : _react2.default.createElement(
+                        'p',
+                        null,
+                        'N/A'
+                    )
                 ),
                 this.showDropdownArrow()
             );
@@ -257,7 +263,7 @@ var Accordion = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: "content",
+                {
                     style: _extends({}, styles.contentContainerStyle, openStyle, contentContainerStyle)
                 },
                 this.props.children
@@ -271,7 +277,9 @@ var Accordion = function (_Component) {
 
             return _react2.default.createElement(
                 'div',
-                { style: _extends({}, styles.accordionTabContainerStyle, accordionTabContainerStyle) },
+                {
+                    style: _extends({}, styles.accordionTabContainerStyle, accordionTabContainerStyle)
+                },
                 this.renderHeader(),
                 this.renderContent()
             );
@@ -296,7 +304,7 @@ var styles = {
         flex: 1,
         paddingLeft: 10,
         paddingRight: 10,
-        height: 50
+        minHeight: 50
     },
     contentContainerStyle: {
         opacity: 0,
@@ -314,15 +322,19 @@ var styles = {
         OTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
         transitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'
     },
-    openContent: {
-        opacity: 1,
-        maxHeight: 400
+    titleContainer: {
+        overflow: 'auto'
     },
-    accordionTabContainerStyle: {},
     iconStyle: {
         width: 30,
         height: 30
-    }
+    },
+    openContent: {
+        opacity: 1,
+        maxHeight: 400,
+        overflow: 'scroll'
+    },
+    accordionTabContainerStyle: {}
 };
 
 /***/ })

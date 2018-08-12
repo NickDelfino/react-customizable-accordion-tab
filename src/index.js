@@ -34,11 +34,15 @@ export default class Accordion extends Component {
         const { title, headerContainerStyle } = this.props;
 
         return(
-            <div className="content-header"
-                onClick={this.onHeaderClick}
+            <div
                 style={{...styles.headerContainerStyle, ...headerContainerStyle}}
+                onClick={this.onHeaderClick}
             >
-                {title ? title : <p>N/A</p>}
+                <div
+                    style={styles.titleContainer}
+                >
+                    {title ? title : <p>N/A</p>}
+                </div>
                 {this.showDropdownArrow()}
             </div>
         )
@@ -50,8 +54,8 @@ export default class Accordion extends Component {
         const openStyle = this.state.show ? styles.openContent : null;
 
         return(
-            <div className={"content"}
-                 style={{...styles.contentContainerStyle, ...openStyle, ...contentContainerStyle}}
+            <div
+                style={{...styles.contentContainerStyle, ...openStyle, ...contentContainerStyle}}
             >
                 {this.props.children}
             </div>
@@ -63,7 +67,9 @@ export default class Accordion extends Component {
         const { accordionTabContainerStyle } = this.props;
 
         return (
-            <div style={{...styles.accordionTabContainerStyle, ...accordionTabContainerStyle}}>
+            <div
+                style={{...styles.accordionTabContainerStyle, ...accordionTabContainerStyle}}
+            >
                 {this.renderHeader()}
                 {this.renderContent()}
             </div>
@@ -83,7 +89,7 @@ const styles = {
         flex: 1,
         paddingLeft: 10,
         paddingRight: 10,
-        height: 50
+        minHeight: 50
     },
     contentContainerStyle: {
         opacity: 0,
@@ -101,14 +107,18 @@ const styles = {
         OTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
         transitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'
     },
-    openContent: {
-        opacity: 1,
-        maxHeight: 400
-    },
-    accordionTabContainerStyle: {
+    titleContainer: {
+        overflow: 'auto'
     },
     iconStyle: {
         width: 30,
         height: 30
+    },
+    openContent: {
+        opacity: 1,
+        maxHeight: 400,
+        overflow: 'scroll'
+    },
+    accordionTabContainerStyle: {
     }
 };
