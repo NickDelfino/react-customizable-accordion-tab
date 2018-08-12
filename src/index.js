@@ -96,9 +96,9 @@ const styles = {
         padding: 0,
         transitionProperty: 'max-height opacity',
         transitionDuration: '500ms',
-        webkitTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
-        mozTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
-        oTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        WebkitTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        MozTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        OTransitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
         transitionTimingFunction: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)'
     },
     openContent: {
